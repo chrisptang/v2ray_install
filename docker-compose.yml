@@ -1,0 +1,14 @@
+# chris.p.tang@gmail.com
+
+version: '3'
+
+services:
+  v2ray:
+    image: v2ray/official:latest
+    container_name: v2ray
+    restart: always
+    volumes: 
+      - /root/v2ray/config.json:/etc/v2ray/config.json
+      - /root/logs/v2ray:/var/log/v2ray
+    ports:
+      - "32000:32000"
