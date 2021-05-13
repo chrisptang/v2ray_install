@@ -13,7 +13,7 @@ cat > /root/v2ray/config.json <<"EOF2"
             "settings": {
                 "clients": [
                     {
-                        "id": "9b51ac05-ca02-44fc-8c06-7528ce6b73e6",
+                        "id": "2181a7ab-80ca-41e1-bbc7-12be9b722137",
                         "level": 1,
                         "alterId": 64
                     }
@@ -71,14 +71,14 @@ EOF
 	docker-compose up -d
 }
 
-test=$(docker ps |grep CONTAINER | awk '{print $1}')
-if test -n "${test}"
-then
+
+if [ -x "$(command -v docker)" ]; then
     echo "docker has properly installed, please go to v2ray dir and start it manually."
     start_v2ray
     exit 0
 fi
 
+echo "Installing docker"
 curl -fsSL https://get.docker.com | bash -s docker
 apt install docker-compose
 usermod -aG docker lighthouse
