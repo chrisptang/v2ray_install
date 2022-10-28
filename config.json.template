@@ -6,7 +6,7 @@
             "settings": {
                 "clients": [
                     {
-                        "id": "9b51ac05-ca02-44fc-8c06-7528ce6b73e6",
+                        "id": "YOUR_ID",
                         "level": 1,
                         "alterId": 64
                     }
