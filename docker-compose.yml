@@ -4,11 +4,12 @@ version: '3'
 
 services:
   v2ray:
-    image: v2ray/official:latest
+    image: chrisptang/v2ray:latest
     container_name: v2ray
     restart: always
+    environment:
+      - NEW_UUID=${NEW_UUID}
     volumes: 
-      - ./config.json:/etc/v2ray/config.json
       - ./v2ray_logs:/var/log/v2ray
     ports:
       - "32000:32000"

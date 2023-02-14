@@ -10,10 +10,10 @@
       "settings" : {
         "vnext" : [
           {
-            "address" : "this.is.server.ip",
+            "address" : "SERVER_IP",
             "users" : [
               {
-                "id" : "2181a7ab-80ca-41e1-bbc7-12be9b722137",
+                "id" : "YOUR_ID",
                 "alterId" : 64,
                 "security" : "auto",
                 "level" : 0
