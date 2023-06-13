@@ -3,20 +3,23 @@
 start_v2ray()
 {
     export NEW_UUID=`uuidgen`
-	echo "NEW_UUID=${NEW_UUID}" > .env
-    echo "your new id, use it within your client: ${NEW_UUID}"
+    echo "your user id, use it within your client: ${NEW_UUID}"
 
     export SERVER_IP=(`curl --max-time 5 https://ifconfig.io/ip`)
-    echo "your server id:${SERVER_IP}"
+    echo "your server ip:${SERVER_IP}"
 
-    sed -i "s/YOUR_ID/${NEW_UUID}/g" v2ray_client_config.json
-    sed -i "s/SERVER_IP/${SERVER_IP}/g" v2ray_client_config.json
+    perl -pi -e "s/USER_ID/${NEW_UUID}/g" v2ray_client_config.json
+    perl -pi -e "s/SERVER_IP/${SERVER_IP}/g" v2ray_client_config.json
+
+    # sed -i "s/YOUR_ID/${NEW_UUID}/g" v2ray_client_config.json
+    # sed -i "s/SERVER_IP/${SERVER_IP}/g" v2ray_client_config.json
 
     echo -e "this is your client config:\n===\n"
     cat v2ray_client_config.json
     echo -e "\n===end\n"
 
-	cat docker-compose.yml && docker-compose up -d
+	# cat docker-compose.yml && docker-compose up -d
+    docker run -d --name v2ray -p 32000:32000 -e NEW_UUID=${NEW_UUID} --restart always chrisptang/v2ray:latest
 }
 
 
